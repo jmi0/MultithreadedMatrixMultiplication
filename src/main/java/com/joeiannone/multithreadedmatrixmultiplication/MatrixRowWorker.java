@@ -36,6 +36,11 @@ public class MatrixRowWorker implements Runnable {
     @Override
     public void run() {
         
+        /**
+         * Let us know which thread is working
+         */
+        System.out.println(Thread.currentThread().getName()  + " starting on row " + this.start);
+        
         // From starting point to starting point + increment val (each row)
         for(int i = this.start; i < (this.start + this.inc) && (i < this.rowsA); i++) 
             
