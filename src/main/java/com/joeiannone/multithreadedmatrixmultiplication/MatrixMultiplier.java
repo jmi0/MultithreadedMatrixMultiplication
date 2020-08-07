@@ -67,11 +67,29 @@ public class MatrixMultiplier {
         
         
         
-        /**
-         * Now multi threaded multiply process
-         */
+        
         // Reset timestamp for multi threaded solution
 	start_ts = System.currentTimeMillis(); // record time for threaded solution
+        
+        // Now multi threaded multiply process
+        this.multiplyMatricesThreaded();
+       
+        end_ts = System.currentTimeMillis();
+        System.out.println("Multi threaded solution MS: " + (end_ts - start_ts) + "ms");
+        
+        
+        /**
+         * To print matrices and result
+         */
+        //MatrixMultiplication.printMatrix(this.matrixA);
+        //MatrixMultiplication.printMatrix(this.matrixB);
+        //MatrixMultiplication.printMatrix(this.matrixC);
+        
+       
+    }
+    
+    
+    private void multiplyMatricesThreaded() {
         
         try {
             
@@ -136,18 +154,6 @@ public class MatrixMultiplier {
             System.out.println(ex);
         }
         
-        end_ts = System.currentTimeMillis();
-        System.out.println("Multi threaded solution MS: " + (end_ts - start_ts) + "ms");
-        
-        
-        /**
-         * To print matrices and result
-         */
-        //MatrixMultiplication.printMatrix(this.matrixA);
-        //MatrixMultiplication.printMatrix(this.matrixB);
-        //MatrixMultiplication.printMatrix(this.matrixC);
-        
-       
     }
     
     
