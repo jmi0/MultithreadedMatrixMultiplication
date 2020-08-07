@@ -111,17 +111,17 @@ public class MatrixMultiplier {
             for (int i=0; i < this.threads.length; i++) {
                 
                 /**
-                 * Define this specific threads row count
+                 * Define this specific threads row range
                  */
-                int rows = ROWS_PER_THREAD;
-		if (i == this.threads.length - 1) 
-                    // Last thread will take the excess
-		    rows += this.M % CORES;
+                int range = ROWS_PER_THREAD;
+                
+                // Last thread will take the excess
+		if (i == this.threads.length - 1) range += this.M % CORES;
 		
                 /**
                  * Create thread and worker
                  */
-                this.threads[i] = new Thread(new MatrixRowWorker(this.matrixA, this.matrixB, this.matrixC, i*ROWS_PER_THREAD, rows));
+                this.threads[i] = new Thread(new MatrixRowWorker(this.matrixA, this.matrixB, this.matrixC, i*ROWS_PER_THREAD, range));
                 this.threads[i].start();
                 
             }
